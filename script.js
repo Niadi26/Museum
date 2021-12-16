@@ -1,17 +1,17 @@
-//Burger-menu
+//Burger menu
 const burgerOpen = document.querySelector('.burger_open');
     burgerBtnViev = document.querySelector('.slice');
     burgerMenu = document.querySelector('.burger_menu');
 
 const showBurger = () => {
-    burgerOpen.classList.toggle('close');
-    burgerBtnViev.classList.toggle('hide');
-    burgerMenu.classList.toggle('burger_menu_open');
+burgerOpen.classList.toggle('close');
+burgerBtnViev.classList.toggle('hide');
+burgerMenu.classList.toggle('burger_menu_open');
 }
 
 burgerOpen.addEventListener('click', showBurger);
 
-//slider section Wellcome
+//slider section Welcome
 const leftArrWelcome = document.querySelector('.left');
     rightArrWelcome = document.querySelector('.right');
     slides = document.querySelectorAll('.slide');
@@ -86,8 +86,8 @@ const swipeWelcome = (el) => {
     let distY = 0;
     let startTime = 0;
     let elapsedTime = 0;
-    let thrashold = 150; //X way
-    let retraind = 100; //Y way
+    let thrashold = 150; //dist Х
+    let retraind = 100; //dist У
     let allowedTime = 300; //max time swipe
     
     surfase.addEventListener('mousedown', function(e){
@@ -100,26 +100,22 @@ const swipeWelcome = (el) => {
         distX = e.pageX - startX;
         distY = e.pageY - startY;
         elapsedTime = new Date().getTime() - startTime;
-        if(elapsedTime <= allowedTime) {
+        if(elapsedTime <= allowedTime){
             if(Math.abs(distX >= thrashold) && Math.abs(distY<= retraind)) {
-                if(distX > 0) {
-                    predSlideWelcome()
-                } else {
-                    console.log(distX);
-                    nextSlideWelcome()
-                };
+                if(distX > 0) {predSlideWelcome()}
+                else {console.log(distX);
+                    nextSlideWelcome()};
             }
         }
     })
     
-    surfase.addEventListener('touchstart', function(e) {
+    surfase.addEventListener('touchstart', function(e){
         let touchObj = e.changedTouches[0];
         startX = touchObj.pageX;
         startY = touchObj.pageY;
         startTime = new Date().getTime();
         e.preventDefault()
     })
-    
     surfase.addEventListener('touchstart', function(e){e.preventDefault()})
     surfase.addEventListener('touchend', function(e){
         let touchObj = e.changedTouches[0];
@@ -161,7 +157,6 @@ function pauseV() {
     play.classList.remove('hide');
     playBtn.classList.remove('hide');
 }
-
 play.addEventListener('click', playV);
 playBtn.addEventListener('click', playV);
 pause.addEventListener('click', pauseV);
@@ -175,8 +170,8 @@ function volume (){
     if (v == 0) {
         muteV();
     } else {
-        sound.classList.remove('hide');
-        not_sound.classList.add('hide');
+    sound.classList.remove('hide');
+    not_sound.classList.add('hide');
     }
 }
 
@@ -236,13 +231,13 @@ document.documentElement.addEventListener("keydown", function(e) {
     }
 });
 
-//progress in section Video
+//Progress bar section Video
 const progress = document.querySelector('.video_control_pr');
 progress.onclick = WindV;
   
 progress.addEventListener('input', function() {
-    const value = this.value;
-    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
+  const value = this.value;
+  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
 })
 
 video.ontimeupdate = progressV;
@@ -264,7 +259,7 @@ function WindV () {
     playV();
 }
 
-//slider explore
+//slider section Explore
 
 function initComparisons() {
     let x, i;
@@ -273,51 +268,52 @@ function initComparisons() {
       compareImages(x[i]);
     }
     function compareImages(img) {
-        let w = img.offsetWidth;
-        let h = img.offsetHeight;
-        img.style.width = (w / 2) + "px";
-        slider = document.createElement("DIV");
-        slider.setAttribute("class", "img_slider");
-        img.parentElement.insertBefore(slider, img);
-        slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
-        slider.addEventListener("mousedown", slideReady);
-        window.addEventListener("mouseup", slideFinish);
-        slider.addEventListener("touchstart", slideReady);
-        window.addEventListener("touchstop", slideFinish);
-        function slideReady(e) {
-            e.preventDefault();
-            clicked = 1;
-            window.addEventListener("mousemove", slideMove);
-            window.addEventListener("touchmove", slideMove);
-        }
-        function slideFinish() {
-            clicked = 0;
-        }
-        function slideMove(e) {
-            let pos;
-            if (clicked == 0) return false;
-            pos = getCursorPos(e)
-            if (pos < 0) pos = 0;
-            if (pos > w) pos = w;
-            slide(pos);
-        }
-        function getCursorPos(e) {
-            let a, x = 0;
-            e = e || window.event;
-            a = img.getBoundingClientRect();
-            x = e.pageX - a.left;
-            x = x - window.pageXOffset;
-            return x;
-        }
-        function slide(x) {
-            img.style.width = x + "px";
-            slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
-        }
+    let w = img.offsetWidth;
+    let h = img.offsetHeight;
+      img.style.width = (w / 2) + "px";
+      slider = document.createElement("DIV");
+      slider.setAttribute("class", "img_slider");
+      img.parentElement.insertBefore(slider, img);
+      slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+      slider.addEventListener("mousedown", slideReady);
+      window.addEventListener("mouseup", slideFinish);
+      slider.addEventListener("touchstart", slideReady);
+      window.addEventListener("touchstop", slideFinish);
+      function slideReady(e) {
+        e.preventDefault();
+        clicked = 1;
+        window.addEventListener("mousemove", slideMove);
+        window.addEventListener("touchmove", slideMove);
+      }
+      function slideFinish() {
+        clicked = 0;
+      }
+      function slideMove(e) {
+        let pos;
+        if (clicked == 0) return false;
+        pos = getCursorPos(e)
+        if (pos < 0) pos = 0;
+        if (pos > w) pos = w;
+        slide(pos);
+      }
+      function getCursorPos(e) {
+        let a, x = 0;
+        e = e || window.event;
+        a = img.getBoundingClientRect();
+        x = e.pageX - a.left;
+        x = x - window.pageXOffset;
+        return x;
+      }
+      function slide(x) {
+        img.style.width = x + "px";
+        slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+      }
     }
-}
+  }
 initComparisons();
 
 // MAP
+
 mapboxgl.accessToken = `pk.eyJ1IjoibmlhZGkyNiIsImEiOiJja3Vtc25hMHIwbW51Mm90aGs0cmU4dGI2In0.iQK4vFnkhikBr1_56sqbIg`;
 const map = new mapboxgl.Map({
     container: 'map', // container ID
@@ -385,7 +381,7 @@ function checkbox () {
     }
 }
 
-// Galery animation
+// Animation Gallery
 
 function debounse (func, wait = 20, immediate = true) {
     let timeout;
