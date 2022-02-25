@@ -143,6 +143,7 @@ const full = document.querySelector('#full');
 const not_full = document.querySelector('#not-full');
 let video = document.querySelector('#video_player');
 let videoDiv = document.querySelector('.video_main');
+const volumeBar = document.querySelector('#volume');
 
 function playV() {
     video.play();
@@ -179,12 +180,16 @@ function muteV() {
     video.volume = 0;
     sound.classList.add('hide');
     not_sound.classList.remove('hide');
+    volumeBar.value = video.volume;
+    volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${video.volume}%, #fff ${video.volume}%, white 100%)`;
 }
 
 function volumeVideo() {
     video.volume = 1;
     sound.classList.toggle('hide');
     not_sound.classList.toggle('hide');
+    volumeBar.value = 50;
+    volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${50}%, #fff ${50}%, white 100%)`;
 }
 
 sound.addEventListener('click', muteV);
@@ -231,14 +236,14 @@ document.documentElement.addEventListener("keydown", function(e) {
     }
 });
 
-//Progress bar section Video
-const progress = document.querySelector('.video_control_pr');
-progress.onclick = WindV;
-  
-progress.addEventListener('input', function() {
+volumeBar.addEventListener('input', function() {
   const value = this.value;
   this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
 })
+
+//Progress bar section Video
+const progress = document.querySelector('.video_control_pr');
+progress.onclick = WindV;
 
 video.ontimeupdate = progressV;
 
@@ -246,6 +251,7 @@ function progressV () {
     let allTime = video.duration;
     let nowTime = video.currentTime;
     progress.value = nowTime / allTime * 100;
+    progress.style.background = `linear-gradient(to right, #710707 0%, #710707 ${progress.value}%, #fff ${progress.value}%, white 100%)`
     if (progress.value == 100) {
         pauseV();
     }

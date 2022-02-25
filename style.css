@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #030303;
+    overflow-x: hidden;
 }
 
 button {
@@ -74,6 +75,7 @@ a:active {
 
 .header {
     height: 150px;
+    padding: 0 10px;
 }
 
 .header_container {
@@ -217,18 +219,18 @@ a:active {
 }
 
 .section {
-    padding: 75px 0;
+    padding: 75px 5px;
 }
 
 @media (max-width: 1044px) {
     .section {
-        padding: 60px 0;
+        padding: 60px 5px;
     }
 }
 
 @media (max-width: 788px) {
     .section {
-        padding: 40px 0;
+        padding: 40px 5px;
     }
 }
 
@@ -269,15 +271,18 @@ a:active {
 }
 
 .welcome {
-    height: 740px;
+    height: 75vh;
+    position: relative;
+    padding-top: 0;
+    padding-bottom: 50px;
 }
 
 @media (max-width: 1044px) {
-    .welcome {
-        height: 550px;
+    .welcome{
+        height: 71vh;
+        padding-bottom: 0;
     }
 }
-
 @media (max-width: 788px) {
     .welcome {
         height: 100%;
@@ -345,42 +350,32 @@ a:active {
         margin: 20px 0 40px 0;
     }
 }
-.welcome{
-    position: relative;
-    padding-top: 0;
-    padding-bottom: 50px;
-}
-
-@media (max-width: 788px) {
-    .welcome{
-        padding-bottom: 0;
-    }
-}
 
 .slides_container{
     width: 59%;
-    height: 750px;           
+    height: 60vw;           
     overflow: hidden;
     position: absolute;
     left: 42%;
     top: 1%;
 }
 
-@media (max-width: 1044px) {
-    .slides_container{
-        width: 70%;
-        left: 30%;
-        height: 585px;
-    }
+.slide {
+    display: none;
+    height: 55vw;
 }
 
 @media (max-width: 788px) {
     .slides_container{
     position: static;
     width: 100%;
-    height: 546px;                                
+    height: 75vw;                                
     margin: 0 auto;
     margin-top: 50px;
+    }
+
+    .slide {
+        height: 100%;
     }
 }
 
@@ -388,11 +383,6 @@ a:active {
     .slides_container{
     height: 280px;
     }
-}
-
-.slide {
-    display: none;
-    height: 750px;
 }
 
 .active {
@@ -530,22 +520,13 @@ a:active {
     justify-content: space-between;
     align-items: center;
     padding: 40px 50px;
-    width: 38%;
     height: 120px;
     box-sizing: border-box;
     position: absolute;
-    top: 85%;
-    left: 63%;
+    bottom: 0;
+    right: 0;
     z-index: 10;
     background-color: #030303;
-}
-@media (max-width: 1044px) {
-    .welcome_slider_cont {
-        width: 70%;
-        top: 80%;
-        left: 30%;
-        padding-left: 20%;
-    }
 }
 
 @media (max-width: 788px) {
@@ -555,7 +536,7 @@ a:active {
         left: 0;
         height: 100px;
         margin: 0 auto;
-        width: 70%;
+        width: 95%;
         padding: 20px 30px;
     }
 }
@@ -815,9 +796,16 @@ a:active {
     display: flex;
 }
 
-@media (max-width: 1044px) {
+.explore_info {
+    flex: 1 1 300px;
+}
+
+@media (max-width: 1144px) {
     .explore_flex {
         display: block;
+    }
+    .explore_info {
+        width: 100%;
     }
 }
 
@@ -827,7 +815,7 @@ a:active {
     font-style: normal;
     font-weight: 300;
     font-size: 22px;
-    line-height: 38px;
+    line-height: 30px;
     color: #FFFFFF;
 }
 
@@ -840,6 +828,7 @@ span {
   height: 700px;
   width: 720px;
   box-sizing: border-box;
+  margin: 0 auto;
   margin-left: 60px;
 }
 
@@ -852,12 +841,14 @@ span {
 
 .img_slider {
     position: absolute;
-    left: 50%;
     z-index: 50;
     cursor: ew-resize;
     width: 39px;
     height: 100%;
     background-image: url('assets/svg/explore\ slider.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .explore_img {
@@ -867,7 +858,7 @@ span {
     object-fit: fill;
 }
 
-@media (max-width: 1044px) {
+@media (max-width: 1144px) {
     .explore_txt br {
         display: none;
     }
@@ -878,7 +869,7 @@ span {
         margin-top: 0;
         font-size: 20px;
     }
-    .explore_img {
+    .explore_container {
         margin: 0 auto;
     }
 }
@@ -889,8 +880,23 @@ span {
     }
 }
 
-@media (max-width: 440px) {
-    
+@media (max-width: 750px) {
+    .explore_container {
+        width: 100vw;
+        height: 75vw;
+    }
+    .explore_img {
+        width: 75vw;
+        object-fit: fill;
+    }
+    .img_comp {
+        margin-left: 10vw;
+    }
+    .img_slider {
+        left: 50vw;
+        width: 30px;
+       height: 73vw;
+    }
 }
 
 .video_info {
@@ -909,7 +915,7 @@ span {
 
 @media (max-width: 1044px) {
     .video {
-        padding-bottom: 50px;
+        padding-bottom: 40px;
     }
     .video_txt {
     display: none;
@@ -995,7 +1001,6 @@ span {
 .video_control_pr {
     height: 8px;
     width: 65%;
-    background: linear-gradient(to right, #710707 40%, #fff 40%, #fff 100%);
     outline: none;
     -webkit-appearance: none;
     transition: background 450ms ease-in;
@@ -1201,16 +1206,19 @@ span {
     .video_submain {
         margin-top: 25px;
         column-gap: 20px;
-    }
-    .video_submain_item {
-        width: 48%;
-    }    
+    }  
 }
 
-@media (max-width: 440px) {
+@media (max-width: 550px) {
     .video_submain {
     margin-top: 60px;
+    justify-content: center;
     }
+    .video_submain_item {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }    
 }
 
 .gallery {
@@ -1303,14 +1311,14 @@ span {
     }
 }
 
-@media (max-width: 788px) {
+@media (max-width: 878px) {
     .tickets_content {
         justify-content: start;
-        column-gap: 60px;
+        column-gap: 30px;
         }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 690px) {
     .tickets_content {
     display: block;
     }
@@ -1319,7 +1327,6 @@ span {
 .tickets_type {
     display: flex;
     flex-direction: column;
-    margin-left: -7%;
 }
 
 @media (max-width: 1300px) {
@@ -1498,7 +1505,7 @@ span {
     }
 }
 
-@media (max-width: 788px) {
+@media (max-width: 828px) {
     .tickets_img {
         width: 444px;             
         max-height: 340px;
@@ -1511,10 +1518,9 @@ span {
     }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 690px) {
     .tickets_img {
-        width: 380px;            
-        max-height: 160px;
+        margin: 0 auto;
     }
     .tickets_amound {
         width: 175px;
@@ -1526,6 +1532,12 @@ span {
     font-size: 16px;
     line-height: 19px;
     text-align: center;
+    }
+}
+@media (max-width: 440px) {
+    .tickets_img {
+        width: 380px;            
+        max-height: 160px;
     }
     .tickets_txt {
         font-size: 16px;
@@ -1640,6 +1652,9 @@ span {
     }
 }
 
+.footer {
+    padding: 0 10px;
+}
 .footer_container {
     display: flex;
     justify-content: space-between;
@@ -1728,28 +1743,21 @@ span {
         padding-left: 0;
         row-gap: 27px;
     }
-    .nav_list_footer:first-child {
-        margin-right: 60px;
-    }
 }
-
-@media (max-width: 788px) {
-    .footer_container {
-        padding-right: 14%;
-    }
+@media (max-width: 958px) {
     .footer_el{
         display: block;
         width: 53%;
     }
+}
+
+@media (max-width: 788px) {
     .logo_footer {
         margin-top: 50px;
     }
     .nav_footer {
         justify-content: space-between;
         margin-top: 55px;
-    }
-    .nav_list_footer{
-        margin-left: -60px;
     }
     .fotter_social {
         margin-bottom: 25px;
@@ -1762,7 +1770,7 @@ span {
     }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 640px) {
     .footer_container {
         display: block;
         padding-right: 0;
@@ -1780,17 +1788,23 @@ span {
     }
     .nav_list_footer {
         flex-flow: row nowrap;
-        justify-content: space-between;
+        justify-content: start;
+        column-gap: 10px;
         margin-bottom: 30px;
     }
     .fotter_social {
         justify-content: center;
-        column-gap: 0;
+        column-gap: 10px;
     }
 }
 
+.rsschool_cont {
+    display: flex;
+    padding-left: 0;
+}
+
 .rsschool_el {
-    margin: 50px 0;
+    margin: 30px 0;
 }
 
 .rsschool_txt {
@@ -1802,15 +1816,15 @@ span {
     letter-spacing: 2px;
     color: #FFFFFF;
 }
-
-@media (max-width: 440px) {
+@media (max-width: 650px) {
     .rsschool_txt {
         font-size: 16px;
     }
+
+}
+
+@media (max-width: 500px) {
     .rsschool_cont {
-        display: flex;
-        justify-content: space-between;
-        padding-left: 0;
         margin-top: 40px;
     }
     .rsschool_el {
@@ -1869,7 +1883,8 @@ span {
 }
 
 .burger_img {
-    max-width: 100%;
+    width: 90%;
+    height: 200px;
     max-height: auto;
     object-fit: cover;
 }
@@ -1894,28 +1909,20 @@ span {
     .burger_item {
         display: block;
     }
-    .burger_img:first-child {
-        margin-bottom: 20px;
-    }
-    .burger_img:last-child{
-        margin-left: 2%;
-    }
 }
 
 @media (max-width: 440px) {
+    .burger_menu {
+        padding: 10px;
+    }
     .burger_img_cont {
         display: flex;
         justify-content: space-between;
     }
     .burger_img{
         width: 30%;
+        min-width: 80px;
         height: 95px;
-
-    }
-    .burger_img:first-child {
-        margin-bottom: 0;
-    }
-    .burger_img:last-child{
-        margin-left: 0;
+        margin: 0 2px;
     }
 }
