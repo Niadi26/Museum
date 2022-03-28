@@ -86,9 +86,9 @@ const swipeWelcome = (el) => {
     let distY = 0;
     let startTime = 0;
     let elapsedTime = 0;
-    let thrashold = 150; //dist Х
-    let retraind = 100; //dist У
-    let allowedTime = 300; //max time swipe
+    let thrashold = 150;
+    let retraind = 100;
+    let allowedTime = 300;
     
     surfase.addEventListener('mousedown', function(e){
         startX = e.pageX;
@@ -322,10 +322,10 @@ initComparisons();
 
 mapboxgl.accessToken = `pk.eyJ1IjoibmlhZGkyNiIsImEiOiJja3Vtc25hMHIwbW51Mm90aGs0cmU4dGI2In0.iQK4vFnkhikBr1_56sqbIg`;
 const map = new mapboxgl.Map({
-    container: 'map', // container ID
-    style: 'mapbox://styles/niadi26/ckumuznxe1eww17m0axzf8ksm', // style URL
-    center: [2.3364, 48.86091], // starting position [lng, lat]
-    zoom: 16 // starting zoom
+    container: 'map',
+    style: 'mapbox://styles/niadi26/ckumuznxe1eww17m0axzf8ksm',
+    center: [2.3364, 48.86091],
+    zoom: 16
     });
 
     const marker1 = new mapboxgl.Marker({ color: 'black'})
